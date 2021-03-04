@@ -1,6 +1,9 @@
-import sys
+import sys, os
 
 f = open("dict.txt","r").read()
+r = open("r.txt", "w")
+h = open("h.txt", "w")
+
 lists = f.split('\n')
 #print(list)
 
@@ -23,7 +26,7 @@ def checkPart(currentString, lists):
 				if currentString[0:x] == check:
 					return [currentString[0:x], currentString[x:len(currentString)]]
 	return [currentString[0], currentString[1:len(currentString)]]
-
+'''
 def compare(response, key):
 	r = response.split(" ")
 	k = key.split(" ")
@@ -36,7 +39,7 @@ def compare(response, key):
 		if bit not in k:
 			failures = failures + 1
 	return failures / total
-
+'''
 current = translate.readline().strip()
 
 while current != '':
@@ -55,6 +58,17 @@ while current != '':
 	toPrint = toPrint.strip()
 	print('Generated line\t' + toPrint)
 	correctLine = correct.readline()
-	print("Correct line\t" + correctLine.strip())
-	print("Word error rate = " + str(compare(toPrint, correctLine)) + '\n')
+	print("Correct line\t" + correctLine.strip() + '\n')
+	r.write(correctLine.strip() + '\n')
+	h.write(toPrint + '\n')
+	r.close()
+	h.close()
+	os.system('python3 wer.py r.txt h.txt')
+	r = open('r.txt', 'w')
+	h = open('h.txt', 'w')
+#	print("Word error rate = " + str(compare(toPrint, correctLine)) + '\n')
 	current = translate.readline().strip()
+r.close()
+h.close()
+print('Overall WER: ')
+os.system('python3 wer.py r.txt h.txt')
