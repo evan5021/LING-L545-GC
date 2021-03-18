@@ -1,0 +1,17 @@
+DELIMITERS = "." ;
+
+LIST DET = DET ;
+LIST PUNCT = PUNCT ;
+LIST NOUN = NOUN;
+LIST ADP = ADP;
+LIST Nom = Case=Nom;
+List Vek = "век";
+LIST Pomoch = "помочь" "помогать";
+LIST Loc = Case=Loc;
+
+SECTION
+
+REMOVE DET IF (1C PUNCT) ;
+REMOVE Nom IF (-1 ADP) ;
+REMOVE Vek IF (NOT 1 PUNCT) ;
+REMOVE Loc IF (-1 Pomoch) ;
