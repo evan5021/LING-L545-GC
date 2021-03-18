@@ -6,20 +6,22 @@ Multichar_Symbols
 %<loc%>              ! Locativo
 %{m%}                ! Archiphoneme
 %<der_kue%>          ! No clue
+%<comp%>             !Comparativo
+%{g%}                ! k or g
+%{n%}                ! n or null
+%<pl%>               ! plural
 
 LEXICON Root
 
 Nouns ;
-
-LEXICON N
-
-%<n%>: CASE ;
 
 LEXICON CASE
 
 %<nom%>: # ; ! ""
 %<gen%>:%>gui #; ! "de"
 %<loc%>:%>%{m%}e # ; ! "a, en"
+%<comp%>:%>icha # ;  ! Comparativo
+%<pl%>:%>%{n%}%{g%}uéra CASE ;
 
 LEXICON Nouns
 
@@ -27,15 +29,12 @@ ava:ava N ; ! "raza, gente"
 óga:óga N ; ! "casa"
 irũ:irũ N ; ! "amigo"
 apyka:apyka N ; ! "silla"
+akãvai:akãvai N ; ! "craziness"
 
 LEXICON N
 
 %<n%>: CASE ;
 %<n%>: SUBST ;
-
-LEXICON SUBST
-
-%<der_kue%>:%>kue # ;
 
 LEXICON SUBST
 
